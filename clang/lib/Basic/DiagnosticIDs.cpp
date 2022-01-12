@@ -726,10 +726,6 @@ bool DiagnosticIDs::ProcessDiag(DiagnosticsEngine &Diag) const {
   DiagnosticIDs::Level DiagLevel
     = getDiagnosticLevel(DiagID, Info.getLocation(), Diag);
 
-  // MINE: check if DiagID == err_pp_file_not_found
-  if (DiagID == 972)
-    DiagLevel = Warning;
-
   // Update counts for DiagnosticErrorTrap even if a fatal error occurred
   // or diagnostics are suppressed.
   if (DiagLevel >= DiagnosticIDs::Error) {
