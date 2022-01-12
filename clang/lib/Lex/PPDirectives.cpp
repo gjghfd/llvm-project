@@ -1921,8 +1921,14 @@ Optional<FileEntryRef> Preprocessor::LookupHeaderIncludeOrImport(
 
   // If the file is still not found, just go with the vanilla diagnostic
   assert(!File.hasValue() && "expected missing file");
+  
+  //MINE: Do not emit diagnostic
+  /*
   Diag(FilenameTok, diag::err_pp_file_not_found)
       << OriginalFilename << FilenameRange;
+    */
+  llvm::errs() << OriginalFilename << ": file not found\n";
+
   if (IsFrameworkFound) {
     size_t SlashPos = OriginalFilename.find('/');
     assert(SlashPos != StringRef::npos &&
